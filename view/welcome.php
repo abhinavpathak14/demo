@@ -1,0 +1,1 @@
+<center><h1>Hi, welcome <?php echo $_SESSION['userdata']['email'] ?>|<a href="<?php echo base_url('logout.php') ?>">Logout</a></h1></center>
