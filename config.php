@@ -1,6 +1,18 @@
 <?php
 session_start();
-$config['base_url'] = "http://localhost/demo/";
+$dbopts = parse_url(getenv('DATABASE_URL'));
+echo '<pre>';
+print_r($dbopts);
+die;
+$app->register(new Herrera\Pdo\PdoServiceProvider(),
+  array(
+    'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"],
+    'pdo.port' => $dbopts["port"],
+    'pdo.username' => $dbopts["user"],
+    'pdo.password' => $dbopts["pass"]
+  )
+);
+$config['base_url'] = "https://pure-ridge-6265.herokuapp.com/";
 //database setting
 define('HOST', 'localhost');
 define('USERNAME', 'root');
