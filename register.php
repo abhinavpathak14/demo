@@ -17,8 +17,8 @@
 //        $str_sql .= " created_by='1',";
 //        $str_sql .= " created_on='".date('Y-m-d')."'";
         
-        $str_sql = "INSERT INTO users (user_id, email, name, user_password, city, created_by, created_on)
-    VALUES ('".++$row['max_id']."','".$email."', '".$name."', '".md5($password)."', '".$city."', 1, '".date('Y-m-d')."');";
+        $str_sql = "INSERT INTO users (user_id, email, name, user_password, city, created_by, created_on, is_admin)
+    VALUES ('".++$row['max_id']."','".$email."', '".$name."', '".md5($password)."', '".$city."', 1, '".date('Y-m-d')."',0);";
         
         if(pg_query($con, $str_sql)) {
             setTempSession('success', 'Registration has been successfully completed. Thank You. Now You can login.');
