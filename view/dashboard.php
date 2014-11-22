@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/jquery-ui.css">
   </head>
   <body>
-      <form name="search" id="search" action="<?php echo base_url('dashboard.php') ?>" method="post">
+      <form name="search" id="search" action="<?php echo base_url('dashboard.php') ?>" method="get">
           <table>
             <thead>
                 <tr>
@@ -22,12 +22,18 @@
                 </thead>
                 <tbody>
                 <?php
-                    while($row = mysqli_fetch_assoc($result_set)) {
+                    if(pg_num_rows($result_set)) {
+                    while($row = pg_fetch_assoc($result_set)) {
                 ?>
                     <tr>
                         <td><?php echo $row['email'] ?></td>
                         <td><?php echo $row['city'] ?></td>
                     </tr>                
+                <?php
+                    }
+                    } else {
+                ?>
+                    <tr><td colspan="2">No records found</td></tr>
                 <?php
                     }
                 ?>

@@ -30,7 +30,7 @@ function isLogin() {
 
 function isAdmin() {
     if(isLogin()) {
-        if(isset($_SESSION['userdata']['IsAdmin']) && $_SESSION['userdata']['IsAdmin'] == 1) {
+        if(isset($_SESSION['userdata']['is_admin']) && $_SESSION['userdata']['is_admin'] == 1) {
             return TRUE;
         } else {
             return FALSE;
